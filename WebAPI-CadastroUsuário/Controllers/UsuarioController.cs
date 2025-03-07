@@ -25,14 +25,14 @@ namespace WebAPI_CadastroUsuário.Controllers
             return Ok(await _usuarioInterface.ListarUsuario());
         }
 
-        [HttpPost]
+        [HttpPost("usuarios")]
         public async Task<ActionResult<Usuario>> CriarUsuario(Usuario usuarioNovo)
         {
             var newUsuario = await _usuarioInterface.CriarUsuario(usuarioNovo);
             return Ok(newUsuario);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("usuarios/{id}")]
         public async Task<IActionResult> AtualizarUsuario(int id, Usuario usuario)
         {
             if (id != usuario.Id) return BadRequest();
@@ -40,7 +40,7 @@ namespace WebAPI_CadastroUsuário.Controllers
             return Ok(user);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("usuarios/{id}")]
         public async Task<IActionResult> DeletarUsuario(int id)
         {
             var confere = await _usuarioInterface.DeletarUsuario(id);
